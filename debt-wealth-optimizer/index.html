@@ -1,0 +1,681 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Debt vs Wealth Creation Decision Intelligence Platform</title>
+    <link rel="stylesheet" href="/src/shared/styles/base.css">
+    <link rel="stylesheet" href="/src/pages/home/styles.css">
+    <link rel="stylesheet" href="/debt-wealth-optimizer/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  </head>
+  <body class="mesh-bg">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="/" class="site-brand">
+        <div class="brand-icon">
+          <img src="/logo.png" alt="SWS Financial Logo" style="max-width: 70px; height: auto;">
+        </div>
+        <div class="brand-text">
+          <div class="brand-name"><span class="sws-s">S</span><span class="sws-w">W</span><span class="sws-s">S</span> <span class="company-name">Financial Solutions Pvt. Ltd.</span></div>
+          <div class="brand-tagline">Comprehensive Financial Consultancy &amp; Services</div>
+        </div>
+      </a>
+      <nav class="topnav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/goal-planner/" class="nav-link">Goal Planner</a>
+        <a href="/risk-profiling/" class="nav-link">Risk Profiler</a>
+        <a href="/insurance-calculator/" class="nav-link">Insurance</a>
+        <a href="/emergency-fund/" class="nav-link">Emergency Fund</a>
+        <a href="/debt-wealth-optimizer/" class="nav-link active">Debt vs Wealth</a>
+        <button class="theme-toggle" aria-label="Toggle theme" title="Toggle dark mode"></button>
+      </nav>
+    </div>
+  </header>
+  
+  <header class="header">
+    <div class="header-content">
+      <div>
+        <h1>Debt vs Wealth Creation Decision Intelligence Platform</h1>
+        <p class="subtitle">Loan Prepayment vs Investment Optimization — Should you reduce liabilities faster or maximize long-term wealth creation?</p>
+      </div>
+      <div class="header-actions">
+        <button class="action-btn" id="shareBtn" title="Share Results">
+          <i class="fas fa-share-alt"></i>
+          <span>Share</span>
+        </button>
+        <button class="action-btn" id="copyBtn" title="Copy Summary">
+          <i class="fas fa-copy"></i>
+          <span>Copy</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="split-container">
+    <!-- Side by Side Input Panels -->
+    <div class="split-inputs">
+      <!-- Left: Loan Panel -->
+      <div class="input-panel loan-panel">
+        <div class="panel-header">
+          <div class="panel-icon"><i class="fas fa-home"></i></div>
+          <h3>Loan Details</h3>
+        </div>
+        <div class="panel-body">
+          <div class="slider-group">
+            <div class="slider-label">
+              <span>Loan Amount</span>
+              <span class="slider-value" id="loanAmountValue">₹20,00,000</span>
+            </div>
+            <input type="range" id="loanAmount" min="0" max="10000000" step="100000" value="2000000" class="slider">
+          </div>
+          <div class="slider-group">
+            <div class="slider-label">
+              <span>Interest Rate</span>
+              <span class="slider-value" id="interestRateValue">10%</span>
+            </div>
+            <input type="range" id="interestRate" min="0" max="30" step="0.5" value="10" class="slider">
+          </div>
+          <div class="slider-group">
+            <div class="slider-label">
+              <span>Tenure (Years)</span>
+              <span class="slider-value" id="loanTenureValue">15</span>
+            </div>
+            <input type="range" id="loanTenure" min="1" max="30" step="1" value="15" class="slider">
+          </div>
+          <div class="slider-group">
+            <div class="slider-label">
+              <span>Current EMI</span>
+              <span class="slider-value" id="currentEMIValue">₹21,500</span>
+            </div>
+            <input type="range" id="currentEMI" min="0" max="200000" step="1000" value="21500" class="slider">
+          </div>
+          <div class="select-group">
+            <label>Loan Type</label>
+            <select id="loanType" class="styled-select">
+              <option value="home" selected>Home Loan</option>
+              <option value="personal">Personal Loan</option>
+              <option value="car">Car Loan</option>
+            </select>
+          </div>
+          <div class="select-group">
+            <label>Tax Deductible?</label>
+            <select id="taxDeductible" class="styled-select">
+              <option value="yes" selected>Yes (Section 24b)</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Investment Panel -->
+      <div class="input-panel investment-panel">
+        <div class="panel-header">
+          <div class="panel-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Investment Details</h3>
+        </div>
+        <div class="panel-body">
+          <div class="slider-group">
+            <div class="slider-label">
+              <span>Monthly SIP</span>
+              <span class="slider-value" id="sipAmountValue">₹20,000</span>
+            </div>
+            <input type="range" id="sipAmount" min="0" max="200000" step="1000" value="20000" class="slider">
+          </div>
+          <div class="slider-group">
+            <div class="slider-label">
+              <span>Expected CAGR</span>
+              <span class="slider-value" id="expectedCAGRValue">12%</span>
+            </div>
+            <input type="range" id="expectedCAGR" min="0" max="25" step="0.5" value="12" class="slider">
+          </div>
+          <div class="slider-group">
+            <div class="slider-label">
+              <span>Investment Duration</span>
+              <span class="slider-value" id="investmentDurationValue">15</span>
+            </div>
+            <input type="range" id="investmentDuration" min="1" max="30" step="1" value="15" class="slider">
+          </div>
+          <div class="slider-group">
+            <div class="slider-label">
+              <span>Inflation Rate</span>
+              <span class="slider-value" id="inflationRateValue">6%</span>
+            </div>
+            <input type="range" id="inflationRate" min="0" max="15" step="0.5" value="6" class="slider">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Strategy & Extra Savings -->
+    <div class="strategy-section">
+      <div class="strategy-card">
+        <div class="strategy-header">
+          <h3><i class="fas fa-sliders-h"></i> Strategy Settings</h3>
+        </div>
+        <div class="strategy-body">
+          <div class="presets-bar">
+            <button class="preset-btn" data-preset="conservative">
+              <i class="fas fa-shield-alt"></i>
+              <span>Conservative</span>
+            </button>
+            <button class="preset-btn" data-preset="balanced">
+              <i class="fas fa-balance-scale"></i>
+              <span>Balanced</span>
+            </button>
+            <button class="preset-btn" data-preset="aggressive">
+              <i class="fas fa-rocket"></i>
+              <span>Aggressive</span>
+            </button>
+            <button class="reset-btn" id="resetBtn">
+              <i class="fas fa-undo"></i>
+              <span>Reset</span>
+            </button>
+          </div>
+          <div class="strategy-inputs">
+            <div class="slider-group">
+              <div class="slider-label">
+                <span>Extra Monthly Savings</span>
+                <span class="slider-value" id="extraSavingsValue">₹20,000</span>
+              </div>
+              <input type="range" id="extraSavings" min="0" max="200000" step="1000" value="20000" class="slider">
+            </div>
+            <div class="select-group">
+              <label>Allocation Strategy</label>
+              <select id="strategySelection" class="styled-select">
+                <option value="prepayment">Aggressive Prepayment (100% to Loan)</option>
+                <option value="investing">Aggressive Investing (100% to SIP)</option>
+                <option value="balanced" selected>Balanced (50% Loan + 50% SIP)</option>
+                <option value="optimal">Optimal (AI-Calculated)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Advanced Parameters -->
+    <div class="advanced-section">
+      <div class="section-header">
+        <h3><i class="fas fa-cogs"></i> Advanced Parameters</h3>
+      </div>
+      <div class="advanced-grid">
+        <div class="advanced-card">
+          <div class="card-title">Risk Profile</div>
+          <div class="card-body">
+            <div class="slider-group">
+              <div class="slider-label">
+                <span>Risk Tolerance</span>
+                <span class="slider-value" id="riskToleranceValue">3</span>
+              </div>
+              <input type="range" id="riskTolerance" min="1" max="5" step="1" value="3" class="slider">
+              <div class="slider-labels">
+                <span>Conservative</span>
+                <span>Aggressive</span>
+              </div>
+            </div>
+            <div class="slider-group">
+              <div class="slider-label">
+                <span>Liquidity Need</span>
+                <span class="slider-value" id="liquidityNeedValue">3</span>
+              </div>
+              <input type="range" id="liquidityNeed" min="1" max="5" step="1" value="3" class="slider">
+              <div class="slider-labels">
+                <span>Low</span>
+                <span>High</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="advanced-card">
+          <div class="card-title">Financial Profile</div>
+          <div class="card-body">
+            <div class="slider-group">
+              <div class="slider-label">
+                <span>Emergency Fund (Months)</span>
+                <span class="slider-value" id="emergencyFundValue">3</span>
+              </div>
+              <input type="range" id="emergencyFund" min="0" max="12" step="1" value="3" class="slider">
+            </div>
+            <div class="slider-group">
+              <div class="slider-label">
+                <span>Monthly Income (₹)</span>
+                <span class="slider-value" id="monthlyIncomeValue">₹1,00,000</span>
+              </div>
+              <input type="range" id="monthlyIncome" min="20000" max="500000" step="5000" value="100000" class="slider">
+            </div>
+            <div class="select-group">
+              <label>Income Stability</label>
+              <select id="incomeStability" class="styled-select">
+                <option value="stable">Stable</option>
+                <option value="moderate">Moderate</option>
+                <option value="unstable">Unstable</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="advanced-card">
+          <div class="card-title">Market Scenarios</div>
+          <div class="card-body">
+            <div class="select-group">
+              <label>CAGR Scenario</label>
+              <select id="cagrScenario" class="styled-select">
+                <option value="pessimistic">Pessimistic (7%)</option>
+                <option value="moderate" selected>Moderate (11%)</option>
+                <option value="optimistic">Optimistic (15%)</option>
+              </select>
+            </div>
+            <div class="select-group">
+              <label>Tax Deductible</label>
+              <select id="taxDeductible" class="styled-select">
+                <option value="yes">Yes (Home Loan)</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Behavioral Finance Section -->
+    <div class="behavioral-section">
+      <div class="section-header">
+        <h3><i class="fas fa-brain"></i> Behavioral Profile</h3>
+      </div>
+      <div class="behavioral-card">
+        <div class="behavioral-questions">
+          <div class="question-item">
+            <div class="question-text">How comfortable are you carrying debt?</div>
+            <div class="question-options">
+              <label class="radio-option">
+                <input type="radio" name="debtComfort" value="1">
+                <span>Very uncomfortable</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="debtComfort" value="2">
+                <span>Somewhat uncomfortable</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="debtComfort" value="3" checked>
+                <span>Neutral</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="debtComfort" value="4">
+                <span>Comfortable</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="debtComfort" value="5">
+                <span>Very comfortable</span>
+              </label>
+            </div>
+          </div>
+          <div class="question-item">
+            <div class="question-text">How would market volatility affect you?</div>
+            <div class="question-options">
+              <label class="radio-option">
+                <input type="radio" name="volatilityTolerance" value="1">
+                <span>Very stressed</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="volatilityTolerance" value="2">
+                <span>Somewhat stressed</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="volatilityTolerance" value="3" checked>
+                <span>Moderately affected</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="volatilityTolerance" value="4">
+                <span>Slightly affected</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="volatilityTolerance" value="5">
+                <span>Not affected</span>
+              </label>
+            </div>
+          </div>
+          <div class="question-item">
+            <div class="question-text">Do you prefer guaranteed outcomes?</div>
+            <div class="question-options">
+              <label class="radio-option">
+                <input type="radio" name="guaranteePreference" value="1">
+                <span>Strongly prefer guaranteed</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="guaranteePreference" value="2">
+                <span>Somewhat prefer guaranteed</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="guaranteePreference" value="3" checked>
+                <span>Neutral</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="guaranteePreference" value="4">
+                <span>Prefer growth potential</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="guaranteePreference" value="5">
+                <span>Strongly prefer growth</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="behavioral-result">
+          <div class="behavioral-type" id="behavioralType">Balanced Planner</div>
+          <div class="behavioral-desc" id="behavioralDesc">Your profile suggests a balanced approach to financial decisions.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results Overview -->
+    <div class="results-overview">
+      <div class="result-card winner-card" data-tooltip="The strategy that maximizes your net worth based on current inputs">
+        <div class="result-icon"><i class="fas fa-trophy"></i></div>
+        <div class="result-content">
+          <div class="result-label">Recommended Strategy</div>
+          <div class="result-value" id="winnerStrategy">Balanced</div>
+          <div class="result-sub">Based on your inputs</div>
+        </div>
+      </div>
+      <div class="result-card" data-tooltip="Difference in net worth between investing and prepayment strategies">
+        <div class="result-icon"><i class="fas fa-coins"></i></div>
+        <div class="result-content">
+          <div class="result-label">Net Worth Difference</div>
+          <div class="result-value" id="netWorthDiff">₹0</div>
+          <div class="result-sub" id="diffLabel">Investing leads by</div>
+        </div>
+      </div>
+      <div class="result-card" data-tooltip="Difference between expected investment returns and loan interest rate">
+        <div class="result-icon"><i class="fas fa-percentage"></i></div>
+        <div class="result-content">
+          <div class="result-label">Return Spread</div>
+          <div class="result-value" id="returnSpreadValue">0%</div>
+          <div class="result-sub">CAGR - Loan Rate</div>
+        </div>
+      </div>
+      <div class="result-card" data-tooltip="Overall financial health score based on debt burden, returns, and liquidity">
+        <div class="result-icon"><i class="fas fa-heartbeat"></i></div>
+        <div class="result-content">
+          <div class="result-label">Financial Health</div>
+          <div class="result-value" id="healthScoreValue">0</div>
+          <div class="result-sub">Out of 100</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Advanced Metrics -->
+    <div class="advanced-metrics-section">
+      <div class="section-header">
+        <h3><i class="fas fa-chart-line"></i> Advanced Analytics</h3>
+      </div>
+      <div class="metrics-grid-advanced">
+        <div class="metric-card-advanced">
+          <div class="metric-icon"><i class="fas fa-inflation"></i></div>
+          <div class="metric-info">
+            <div class="metric-label">Real Returns (Inflation-Adjusted)</div>
+            <div class="metric-values">
+              <div class="metric-value-row">
+                <span class="metric-name">Loan:</span>
+                <span class="metric-value" id="realLoanReturnValue">0%</span>
+              </div>
+              <div class="metric-value-row">
+                <span class="metric-name">Investment:</span>
+                <span class="metric-value" id="realInvestReturnValue">0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="metric-card-advanced">
+          <div class="metric-icon"><i class="fas fa-shield-alt"></i></div>
+          <div class="metric-info">
+            <div class="metric-label">Risk-Adjusted Returns</div>
+            <div class="metric-values">
+              <div class="metric-value-row">
+                <span class="metric-name">Loan:</span>
+                <span class="metric-value" id="riskAdjustedLoanReturnValue">0%</span>
+              </div>
+              <div class="metric-value-row">
+                <span class="metric-name">Investment:</span>
+                <span class="metric-value" id="riskAdjustedInvestReturnValue">0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="metric-card-advanced">
+          <div class="metric-icon"><i class="fas fa-tint"></i></div>
+          <div class="metric-info">
+            <div class="metric-label">Liquidity Score</div>
+            <div class="metric-value-large" id="liquidityScoreValue">0</div>
+            <div class="metric-sub">Out of 100</div>
+          </div>
+        </div>
+        <div class="metric-card-advanced">
+          <div class="metric-icon"><i class="fas fa-exclamation-triangle"></i></div>
+          <div class="metric-info">
+            <div class="metric-label">Financial Stress Score</div>
+            <div class="metric-value-large" id="financialStressScoreValue">0</div>
+            <div class="metric-sub">Lower is better</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Financial Freedom Section -->
+    <div class="fi-section">
+      <div class="section-header">
+        <h3><i class="fas fa-flag-checkered"></i> Financial Freedom Impact</h3>
+      </div>
+      <div class="fi-grid">
+        <div class="fi-card">
+          <div class="fi-icon"><i class="fas fa-calendar-alt"></i></div>
+          <div class="fi-content">
+            <div class="fi-label">Years to FI (Prepayment)</div>
+            <div class="fi-value" id="fiYearsPrepayment">0 yrs</div>
+            <div class="fi-year" id="fiYearPrepayment">Year 0</div>
+          </div>
+        </div>
+        <div class="fi-card">
+          <div class="fi-icon"><i class="fas fa-calendar-alt"></i></div>
+          <div class="fi-content">
+            <div class="fi-label">Years to FI (Investing)</div>
+            <div class="fi-value" id="fiYearsInvesting">0 yrs</div>
+            <div class="fi-year" id="fiYearInvesting">Year 0</div>
+          </div>
+        </div>
+        <div class="fi-card">
+          <div class="fi-icon"><i class="fas fa-coins"></i></div>
+          <div class="fi-content">
+            <div class="fi-label">Passive Income Potential</div>
+            <div class="fi-value" id="passiveIncomeValue">₹0/month</div>
+            <div class="fi-sub">At 4% withdrawal rate</div>
+          </div>
+        </div>
+        <div class="fi-card">
+          <div class="fi-icon"><i class="fas fa-chart-line"></i></div>
+          <div class="fi-content">
+            <div class="fi-label">FI Advantage</div>
+            <div class="fi-value" id="fiAdvantage">0 yrs</div>
+            <div class="fi-sub" id="fiAdvantageLabel">Investing faster</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="charts-section">
+      <div class="section-header">
+        <h3><i class="fas fa-chart-area"></i> Net Worth Growth Over Time</h3>
+      </div>
+      <div class="chart-container">
+        <canvas id="netWorthChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Timeline Section -->
+    <div class="timeline-section">
+      <div class="section-header">
+        <h3><i class="fas fa-clock"></i> Timeline Comparison</h3>
+      </div>
+      <div class="timeline-container">
+        <div class="timeline-track">
+          <div class="timeline-marker prep-marker" id="prepTimelineMarker">
+            <div class="marker-label">Loan Freedom</div>
+            <div class="marker-year" id="prepTimelineYear">0 yrs</div>
+          </div>
+          <div class="timeline-marker invest-marker" id="investTimelineMarker">
+            <div class="marker-label">Investment Maturity</div>
+            <div class="marker-year" id="investTimelineYear">0 yrs</div>
+          </div>
+        </div>
+        <div class="timeline-legend">
+          <div class="legend-item">
+            <div class="legend-dot prep-dot"></div>
+            <span>Prepayment Timeline</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot invest-dot"></div>
+            <span>Investing Timeline</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detailed Comparison -->
+    <div class="comparison-section">
+      <div class="section-header">
+        <h3><i class="fas fa-balance-scale"></i> Detailed Comparison</h3>
+      </div>
+      <div class="comparison-grid">
+        <div class="comparison-box prepayment-box">
+          <div class="box-header">
+            <h4>Prepayment Strategy</h4>
+            <span class="box-badge">Low Risk</span>
+          </div>
+          <div class="box-metrics">
+            <div class="box-metric">
+              <span class="metric-name">Interest Saved</span>
+              <span class="metric-val" id="prepInterestSaved">₹0</span>
+            </div>
+            <div class="box-metric">
+              <span class="metric-name">Loan Freedom</span>
+              <span class="metric-val" id="prepLoanFreedom">0 yrs</span>
+            </div>
+            <div class="box-metric">
+              <span class="metric-name">Net Worth Impact</span>
+              <span class="metric-val" id="prepaymentSummary">₹0</span>
+            </div>
+          </div>
+          <div class="progress-section">
+            <div class="progress-label">
+              <span>Loan Payoff Progress</span>
+              <span id="prepProgressPercent">0%</span>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" id="prepProgressBar"></div>
+            </div>
+          </div>
+          <div class="box-features">
+            <div class="feature"><i class="fas fa-check"></i> Guaranteed Returns</div>
+            <div class="feature"><i class="fas fa-check"></i> Debt-Free Sooner</div>
+            <div class="feature"><i class="fas fa-times"></i> Low Liquidity</div>
+          </div>
+        </div>
+
+        <div class="comparison-box investing-box">
+          <div class="box-header">
+            <h4>Investing Strategy</h4>
+            <span class="box-badge">High Growth</span>
+          </div>
+          <div class="box-metrics">
+            <div class="box-metric">
+              <span class="metric-name">Investment Corpus</span>
+              <span class="metric-val" id="investCorpus">₹0</span>
+            </div>
+            <div class="box-metric">
+              <span class="metric-name">Loan Freedom</span>
+              <span class="metric-val" id="investLoanFreedom">0 yrs</span>
+            </div>
+            <div class="box-metric">
+              <span class="metric-name">Net Worth Impact</span>
+              <span class="metric-val" id="investingSummary">₹0</span>
+            </div>
+          </div>
+          <div class="progress-section">
+            <div class="progress-label">
+              <span>Wealth Accumulation</span>
+              <span id="investProgressPercent">0%</span>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" id="investProgressBar"></div>
+            </div>
+          </div>
+          <div class="box-features">
+            <div class="feature"><i class="fas fa-check"></i> High Growth Potential</div>
+            <div class="feature"><i class="fas fa-check"></i> High Liquidity</div>
+            <div class="feature"><i class="fas fa-times"></i> Market Risk</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stress Testing -->
+    <div class="stress-section">
+      <div class="section-header">
+        <h3><i class="fas fa-shield-alt"></i> Stress Testing</h3>
+      </div>
+      <div class="stress-grid">
+        <div class="stress-options">
+          <label class="stress-option">
+            <input type="checkbox" id="marketCrash">
+            <div class="stress-option-content">
+              <i class="fas fa-chart-line-down"></i>
+              <span>Market Crash (-30%)</span>
+            </div>
+          </label>
+          <label class="stress-option">
+            <input type="checkbox" id="jobLoss">
+            <div class="stress-option-content">
+              <i class="fas fa-briefcase"></i>
+              <span>Job Loss</span>
+            </div>
+          </label>
+          <label class="stress-option">
+            <input type="checkbox" id="rateIncrease">
+            <div class="stress-option-content">
+              <i class="fas fa-percentage"></i>
+              <span>Rate Hike (+2%)</span>
+            </div>
+          </label>
+        </div>
+        <div class="stress-result-card">
+          <div class="stress-result-header">Survival Risk Assessment</div>
+          <div class="stress-result-value" id="survivalImpact">Low Risk</div>
+          <div class="stress-result-desc">Your strategy can handle most scenarios</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <span>Debt vs Wealth Creation Decision Intelligence Platform — Comprehensive financial decision optimization with tax impact, Monte Carlo simulation, stress testing, and AI-powered recommendations.</span>
+  </footer>
+
+  <div id="toastContainer" class="toast-container"></div>
+  <div class="page-transition active"></div>
+  <button class="back-to-top" aria-label="Back to top" title="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+  
+  <svg style="position: absolute; width: 0; height: 0;">
+    <defs>
+      <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:var(--primary)" />
+        <stop offset="100%" style="stop-color:#8b5cf6" />
+      </linearGradient>
+    </defs>
+  </svg>
+  
+  <script type="module" src="/debt-wealth-optimizer/main.js"></script>
+</body>
+</html>

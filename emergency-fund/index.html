@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emergency Fund Adequacy Analyzer</title>
+  <link rel="stylesheet" href="/src/shared/styles/base.css">
+  <link rel="stylesheet" href="/src/pages/home/styles.css">
+  <link rel="stylesheet" href="/src/pages/emergency-fund/styles.css">
+</head>
+<body class="mesh-bg">
+  
+    <header class="topbar">
+    <div class="topbar-inner">
+      <a href="/" class="site-brand">
+        <div class="brand-icon">
+          <img src="/logo.png" alt="SWS Financial Logo" style="max-width: 70px; height: auto;">
+        </div>
+        <div class="brand-text">
+          <div class="brand-name"><span class="sws-s">S</span><span class="sws-w">W</span><span class="sws-s">S</span> <span class="company-name">Financial Solutions Pvt. Ltd.</span></div>
+          <div class="brand-tagline">Comprehensive Financial Consultancy &amp; Services</div>
+        </div>
+      </a>
+      <nav class="topnav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/goal-planner/" class="nav-link">Goal Planner</a>
+        <a href="/risk-profiling/" class="nav-link">Risk Profiler</a>
+        <a href="/insurance-calculator/" class="nav-link">Insurance</a>
+        <a href="/emergency-fund/" class="nav-link active">Emergency Fund</a>
+        <a href="/debt-wealth-optimizer/" class="nav-link">Debt vs Wealth</a>
+        <button class="theme-toggle" aria-label="Toggle theme" title="Toggle dark mode"></button>
+      </nav>
+    </div>
+  </header>
+
+    <header class="header">
+      <div>
+        <h1>Emergency Fund Adequacy Analyzer</h1>
+        <p class="subtitle">Financial Resilience Intelligence · Stress Testing · Liquidity Analytics · Survival Probability</p>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="card accent-blue stagger-1">
+        <h2><span class="section-badge">1</span> Income &amp; Employment Profile</h2>
+        <div class="form-grid">
+          <label>Monthly Take-Home Salary (₹) <input id="salary" type="number" min="0" step="5000" value="80000" /></label>
+          <label>Additional Monthly Income (₹) <input id="extraIncome" type="number" min="0" step="1000" value="0" /></label>
+          <label>Profession Type
+            <select id="profession">
+              <option value="govt">Government Employee</option>
+              <option value="it" selected>IT / Corporate Employee</option>
+              <option value="freelance">Freelancer / Consultant</option>
+              <option value="business">Business Owner</option>
+            </select>
+          </label>
+          <label>Income Stability
+            <select id="incomeStability">
+              <option value="stable">Stable (Fixed salary, no delays)</option>
+              <option value="moderate" selected>Moderate (Occasional delays / variable)</option>
+              <option value="volatile">Volatile (Irregular / seasonal)</option>
+            </select>
+          </label>
+          <label>Years in Current Role <input id="tenure" type="number" min="0" max="50" value="3" /></label>
+          <label>Number of Income Sources <input id="incomeSources" type="number" min="1" max="10" value="1" /></label>
+        </div>
+      </section>
+
+      <section class="card accent-red stagger-2">
+        <h2><span class="section-badge">2</span> Expense Classification</h2>
+        <div class="form-grid">
+          <label>Essential — Rent / EMI (₹) <input id="expRent" type="number" min="0" step="1000" value="25000" /></label>
+          <label>Essential — Food &amp; Groceries (₹) <input id="expFood" type="number" min="0" step="500" value="12000" /></label>
+          <label>Essential — Utilities &amp; Bills (₹) <input id="expUtilities" type="number" min="0" step="500" value="4000" /></label>
+          <label>Essential — Medicines / Health (₹) <input id="expHealth" type="number" min="0" step="500" value="3000" /></label>
+          <label>Essential — Transport / Fuel (₹) <input id="expTransport" type="number" min="0" step="500" value="5000" /></label>
+          <label>Semi-Essential — Internet / Phone (₹) <input id="expInternet" type="number" min="0" step="100" value="1500" /></label>
+          <label>Semi-Essential — Education / Subscriptions (₹) <input id="expEducation" type="number" min="0" step="100" value="2000" /></label>
+          <label>Discretionary — Entertainment / Dining (₹) <input id="expDiscretionary" type="number" min="0" step="500" value="8000" /></label>
+        </div>
+      </section>
+
+      <section class="card accent-green stagger-3">
+        <h2><span class="section-badge">3</span> Savings, Liquidity &amp; Assets</h2>
+        <div class="form-grid">
+          <label>Bank Savings Account (₹) <input id="savingsBank" type="number" min="0" step="10000" value="150000" /></label>
+          <label>Fixed Deposits / Liquid Funds (₹) <input id="liquidInvestments" type="number" min="0" step="10000" value="100000" /></label>
+          <label>Stocks / Mutual Funds (₹) <input id="equityInvestments" type="number" min="0" step="10000" value="200000" /></label>
+          <label>Real Estate Value (₹) <input id="realEstate" type="number" min="0" step="100000" value="0" /></label>
+          <label>PPF / EPF / NPS (₹) <input id="retirementAssets" type="number" min="0" step="10000" value="300000" /></label>
+          <label>Monthly Savings Rate (% of income) <input id="savingsRate" type="number" min="0" max="100" step="1" value="15" /></label>
+        </div>
+      </section>
+
+      <section class="card accent-amber stagger-4">
+        <h2><span class="section-badge">4</span> Debt &amp; EMI Burden</h2>
+        <div class="form-grid">
+          <label>Home Loan EMI (₹) <input id="emiHome" type="number" min="0" step="1000" value="20000" /></label>
+          <label>Personal Loan EMI (₹) <input id="emiPersonal" type="number" min="0" step="1000" value="0" /></label>
+          <label>Car / Two-Wheeler EMI (₹) <input id="emiCar" type="number" min="0" step="1000" value="5000" /></label>
+          <label>Credit Card Outstanding (₹) <input id="ccOutstanding" type="number" min="0" step="1000" value="15000" /></label>
+          <label>Other EMI / Loans (₹) <input id="emiOther" type="number" min="0" step="1000" value="0" /></label>
+          <label>Total Loan Outstanding (₹) <input id="totalLoanOutstanding" type="number" min="0" step="100000" value="2500000" /></label>
+        </div>
+      </section>
+
+      <section class="card accent-purple stagger-5">
+        <h2><span class="section-badge">5</span> Insurance &amp; Family</h2>
+        <div class="form-grid">
+          <label>Health Insurance Cover (₹) <input id="healthInsurance" type="number" min="0" step="50000" value="500000" /></label>
+          <label>Life Insurance Cover (₹) <input id="lifeInsurance" type="number" min="0" step="100000" value="1000000" /></label>
+          <label>Accidental Coverage (₹) <input id="accidentCover" type="number" min="0" step="50000" value="0" /></label>
+          <label>Spouse Working?
+            <select id="spouseWorking">
+              <option value="yes" selected>Yes</option>
+              <option value="no">No</option>
+            </select>
+          </label>
+          <label>Number of Dependent Children <input id="children" type="number" min="0" max="10" value="1" /></label>
+          <label>Dependent Parents / Relatives <input id="dependentParents" type="number" min="0" max="10" value="2" /></label>
+          <label>Any Disabled / Special Needs Dependents
+            <select id="specialNeeds">
+              <option value="no" selected>No</option>
+              <option value="yes">Yes</option>
+            </select>
+          </label>
+          <label>Monthly Family Expenses (₹) <input id="familyExpenses" type="number" min="0" step="5000" value="45000" /></label>
+        </div>
+      </section>
+
+      <section class="card accent-teal stagger-6">
+        <h2><span class="section-badge">6</span> Behavioral &amp; Macro Factors</h2>
+        <div class="form-grid">
+          <label>Spending Discipline
+            <select id="spendingDiscipline">
+              <option value="strict">Strict Budgeting</option>
+              <option value="moderate" selected>Moderate Tracking</option>
+              <option value="loose">Loose / Impulsive</option>
+            </select>
+          </label>
+          <label>Lifestyle Inflation Tendency
+            <select id="lifestyleInflation">
+              <option value="low">Low (Frugal)</option>
+              <option value="moderate" selected>Moderate</option>
+              <option value="high">High (Upgrading frequently)</option>
+            </select>
+          </label>
+          <label>Emergency Fund Withdrawal History
+            <select id="withdrawalHistory">
+              <option value="none">Never touched</option>
+              <option value="rare" selected>Rare (1-2 times)</option>
+              <option value="frequent">Frequent (3+ times/year)</option>
+            </select>
+          </label>
+          <label>Expected Inflation (% p.a.) <input id="inflation" type="number" min="0" max="20" step="0.5" value="6" /></label>
+          <label>Stress Test Horizon (years) <input id="horizon" type="number" min="1" max="30" value="5" /></label>
+          <label>Desired Survival Months <input id="targetMonths" type="number" min="3" max="60" value="12" /></label>
+        </div>
+        <div class="actions">
+          <button id="computeBtn" class="primary">Analyze Financial Resilience</button>
+        </div>
+      </section>
+
+      <section class="card accent-blue stagger-7">
+        <h2><span class="section-badge">7</span> Resilience Analytics &amp; Recommendations</h2>
+        <div id="results" class="results"></div>
+        <div class="disclaimer">
+          This is an educational planning tool. It is not a substitute for professional financial advice. Past performance does not guarantee future results.
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Emergency Fund Adequacy Analyzer — built for institutional-grade financial resilience intelligence.</span>
+    </footer>
+  </div>
+
+  <div id="toastContainer" class="toast-container"></div>
+  <div class="page-transition active"></div>
+  <button class="back-to-top" aria-label="Back to top" title="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+  <script type="module" src="/src/pages/emergency-fund/main.js"></script>
+</body>
+</html>
+
+
+
+

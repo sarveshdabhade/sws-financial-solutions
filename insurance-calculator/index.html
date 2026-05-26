@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dynamic Life Insurance Requirement Calculator</title>
+  <link rel="stylesheet" href="/src/shared/styles/base.css">
+  <link rel="stylesheet" href="/src/pages/home/styles.css">
+  <link rel="stylesheet" href="/src/pages/insurance-calculator/styles.css">
+</head>
+<body class="mesh-bg">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="/" class="site-brand">
+        <div class="brand-icon">
+          <img src="/logo.png" alt="SWS Financial Logo" style="max-width: 70px; height: auto;">
+        </div>
+        <div class="brand-text">
+          <div class="brand-name"><span class="sws-s">S</span><span class="sws-w">W</span><span class="sws-s">S</span> <span class="company-name">Financial Solutions Pvt. Ltd.</span></div>
+          <div class="brand-tagline">Comprehensive Financial Consultancy &amp; Services</div>
+        </div>
+      </a>
+      <nav class="topnav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/goal-planner/" class="nav-link">Goal Planner</a>
+        <a href="/risk-profiling/" class="nav-link">Risk Profiler</a>
+        <a href="/insurance-calculator/" class="nav-link active">Insurance</a>
+        <a href="/emergency-fund/" class="nav-link">Emergency Fund</a>
+        <a href="/debt-wealth-optimizer/" class="nav-link">Debt vs Wealth</a>
+        <button class="theme-toggle" aria-label="Toggle theme" title="Toggle dark mode"></button>
+      </nav>
+    </div>
+  </header>
+    <header class="header">
+      <div>
+        <h1>Dynamic Life Insurance Requirement Calculator</h1>
+        <p class="subtitle">Human Life Value · Income Replacement · Liability Protection · Goal Coverage · Gap Analysis</p>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="card accent-blue stagger-1">
+        <h2><span class="section-badge">1</span> Client Profile</h2>
+        <div class="form-grid">
+          <label>Current Age <input id="age" type="number" min="18" max="80" value="35" /></label>
+          <label>Annual Income (₹) <input id="income" type="number" min="0" step="50000" value="1200000" /></label>
+          <label>Retirement Age <input id="retireAge" type="number" min="40" max="80" value="60" /></label>
+          <label>Income Growth (% p.a.) <input id="growth" type="number" min="0" step="0.5" value="7" /></label>
+          <label>Inflation (% p.a.) <input id="inflation" type="number" min="0" step="0.5" value="5" /></label>
+          <label>Personal Expenses / year (₹) <input id="personalExp" type="number" min="0" step="50000" value="300000" /></label>
+          <label>Existing Assets (₹) <input id="assets" type="number" min="0" step="100000" value="500000" /></label>
+          <label>Existing Life Cover (₹) <input id="existingCover" type="number" min="0" step="100000" value="1000000" /></label>
+        </div>
+      </section>
+
+      <section class="card accent-red stagger-2">
+        <h2><span class="section-badge">2</span> Family &amp; Dependents</h2>
+        <div class="form-grid">
+          <label>Marital Status
+            <select id="marital">
+              <option value="single">Single</option>
+              <option value="married" selected>Married</option>
+            </select>
+          </label>
+          <label>Spouse Annual Income (₹) <input id="spouseIncome" type="number" min="0" step="50000" value="0" /></label>
+          <label>Number of Children <input id="childrenCount" type="number" min="0" max="10" value="2" /></label>
+          <label>Age of Youngest Child <input id="youngestChildAge" type="number" min="0" max="30" value="5" /></label>
+          <label>Dependent Parents <select id="dependentParents"><option value="no">No</option><option value="yes" selected>Yes</option></select></label>
+          <label>Monthly Family Expenses (₹) <input id="familyExp" type="number" min="0" step="5000" value="50000" /></label>
+        </div>
+      </section>
+
+      <section class="card accent-green stagger-3">
+        <h2><span class="section-badge">3</span> Liabilities</h2>
+        <div class="form-grid">
+          <label>Home Loan Outstanding (₹) <input id="homeLoan" type="number" min="0" step="100000" value="3000000" /></label>
+          <label>Personal Loan (₹) <input id="personalLoan" type="number" min="0" step="50000" value="0" /></label>
+          <label>Car Loan (₹) <input id="carLoan" type="number" min="0" step="50000" value="500000" /></label>
+          <label>Education / Other Loans (₹) <input id="otherLoan" type="number" min="0" step="50000" value="0" /></label>
+        </div>
+      </section>
+
+      <section class="card accent-amber stagger-4">
+        <h2><span class="section-badge">4</span> Future Goals to Protect</h2>
+        <div class="form-grid">
+          <label>Child Education Target (₹) <input id="eduGoal" type="number" min="0" step="100000" value="2000000" /></label>
+          <label>Child Marriage Target (₹) <input id="marriageGoal" type="number" min="0" step="100000" value="1500000" /></label>
+          <label>Spouse Retirement Corpus (₹) <input id="spouseRetireGoal" type="number" min="0" step="100000" value="10000000" /></label>
+          <label>Emergency Corpus Months <input id="emergencyMonths" type="number" min="0" max="60" value="24" /></label>
+        </div>
+      </section>
+
+      <section class="card accent-purple stagger-5">
+        <h2><span class="section-badge">5</span> Risk Factors</h2>
+        <div class="form-grid">
+          <label>Smoking Status
+            <select id="smoking">
+              <option value="non">Non-Smoker</option>
+              <option value="occasional">Occasional</option>
+              <option value="regular">Regular</option>
+            </select>
+          </label>
+          <label>Health Condition
+            <select id="health">
+              <option value="excellent">Excellent</option>
+              <option value="good" selected>Good</option>
+              <option value="fair">Fair</option>
+              <option value="poor">Poor</option>
+            </select>
+          </label>
+          <label>Profession Risk
+            <select id="profession">
+              <option value="low">Low Risk (Desk Job)</option>
+              <option value="medium" selected>Medium Risk (Field / Travel)</option>
+              <option value="high">High Risk (Construction / Mining)</option>
+            </select>
+          </label>
+          <label>Income Stability
+            <select id="stability">
+              <option value="stable">Stable (Salaried Govt/MNC)</option>
+              <option value="moderate" selected>Moderate (Private Salaried)</option>
+              <option value="volatile">Volatile (Freelance / Business)</option>
+            </select>
+          </label>
+        </div>
+        <div class="actions">
+          <button id="computeBtn" class="primary">Calculate Insurance Need</button>
+        </div>
+      </section>
+
+      <section class="card accent-teal stagger-6">
+        <h2><span class="section-badge">6</span> Results &amp; Recommendations</h2>
+        <div id="results" class="results"></div>
+        <div class="disclaimer">
+          This is an educational planning tool. It is not a substitute for professional financial or insurance advice.
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Dynamic Life Insurance Requirement Calculator — built for advisory-grade protection planning.</span>
+    </footer>
+
+  <div id="toastContainer" class="toast-container"></div>
+  <div class="page-transition active"></div>
+  <button class="back-to-top" aria-label="Back to top" title="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+  <script type="module" src="/src/pages/insurance-calculator/main.js"></script>
+</body>
+</html>
