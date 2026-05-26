@@ -9,6 +9,8 @@ export default defineConfig({
         goalPlanner: resolve(__dirname, 'goal-planner/index.html'),
         riskProfiling: resolve(__dirname, 'risk-profiling/index.html'),
         insuranceCalculator: resolve(__dirname, 'insurance-calculator/index.html'),
+        emergencyFund: resolve(__dirname, 'emergency-fund/index.html'),
+        wealthOptimizer: resolve(__dirname, 'wealth-optimizer/index.html'),
       },
     },
   },
