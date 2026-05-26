@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SWS Financial Solutions Pvt. Ltd.</title>
+  <link rel="stylesheet" href="/src/shared/styles/base.css">
+  <link rel="stylesheet" href="/src/pages/home/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="/" class="site-brand">
+        <div class="brand-icon">
+          <img src="/logo.png" alt="SWS Financial Logo" style="max-width: 70px; height: auto;">
+        </div>
+        <div class="brand-text">
+          <div class="brand-name"><span class="sws-s">S</span><span class="sws-w">W</span><span class="sws-s">S</span> <span class="company-name">Financial Solutions Pvt. Ltd.</span></div>
+          <div class="brand-tagline">Comprehensive Financial Consultancy &amp; Services</div>
+        </div>
+      </a>
+      <nav class="topnav">
+        <a href="/" class="nav-link active">Home</a>
+        <a href="/goal-planner/" class="nav-link">Goal Planner</a>
+        <a href="/risk-profiling/" class="nav-link">Risk Profiler</a>
+        <a href="/insurance-calculator/" class="nav-link">Insurance</a>
+        <a href="/emergency-fund/" class="nav-link">Emergency Fund</a>
+        <a href="/debt-wealth-optimizer/" class="nav-link">Debt vs Wealth</a>
+        <button class="theme-toggle" aria-label="Toggle theme" title="Toggle dark mode"></button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="home-main">
+    <h1 class="home-title">
+      <span class="t-blue">Financial</span> <span class="t-red">Services</span><br>
+      <span class="t-black">Offered..</span>
+    </h1>
+
+    <div class="services-grid">
+      <a href="/goal-planner/" class="service-card active">
+        <span class="service-text">Goal Based Financial Planning</span>
+      </a>
+      <a href="/risk-profiling/" class="service-card active">
+        <span class="service-text">Client Risk Profiling Engine</span>
+      </a>
+      <a href="/insurance-calculator/" class="service-card active">
+        <span class="service-text">Dynamic Life Insurance Requirement Calculator</span>
+      </a>
+      <a href="/emergency-fund/" class="service-card active">
+        <span class="service-text">Emergency Fund Adequacy Analyzer</span>
+      </a>
+      <a href="/debt-wealth-optimizer/" class="service-card active">
+        <span class="service-text">Debt vs Wealth Creation Decision Intelligence</span>
+      </a>
+    </div>
+  </main>
+
+  <div class="page-transition active"></div>
+  <button class="back-to-top" aria-label="Back to top" title="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+  <script type="module" src="/src/pages/home/main.js"></script>
+</body>
+</html>

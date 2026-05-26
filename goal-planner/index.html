@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Goal-Based Financial Planning System</title>
+    <link rel="stylesheet" href="/src/shared/styles/base.css">
+  <link rel="stylesheet" href="/src/pages/home/styles.css">
+    <link rel="stylesheet" href="/src/pages/goal-planner/styles.css">
+  </head>
+  <body class="mesh-bg">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="/" class="site-brand">
+        <div class="brand-icon">
+          <img src="/logo.png" alt="SWS Financial Logo" style="max-width: 70px; height: auto;">
+        </div>
+        <div class="brand-text">
+          <div class="brand-name"><span class="sws-s">S</span><span class="sws-w">W</span><span class="sws-s">S</span> <span class="company-name">Financial Solutions Pvt. Ltd.</span></div>
+          <div class="brand-tagline">Comprehensive Financial Consultancy &amp; Services</div>
+        </div>
+      </a>
+      <nav class="topnav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/goal-planner/" class="nav-link active">Goal Planner</a>
+        <a href="/risk-profiling/" class="nav-link">Risk Profiler</a>
+        <a href="/insurance-calculator/" class="nav-link">Insurance</a>
+        <a href="/emergency-fund/" class="nav-link">Emergency Fund</a>
+        <a href="/debt-wealth-optimizer/" class="nav-link">Debt vs Wealth</a>
+        <button class="theme-toggle" aria-label="Toggle theme" title="Toggle dark mode"></button>
+      </nav>
+    </div>
+  </header>
+      <header class="header">
+        <div>
+          <h1>Goal-Based Financial Planning System</h1>
+          <p class="subtitle">Income + Age + Risk + Inflation + Goals → Personalized investment roadmap.</p>
+        </div>
+      </header>
+
+      <main class="grid">
+        <section class="card accent-blue stagger-1">
+          <h2><span class="section-badge">1</span> Investor Profile</h2>
+          <div class="form-grid">
+            <label>
+              Current Age
+              <input id="age" type="number" min="0" value="30" />
+            </label>
+            <label>
+              Monthly Income (₹)
+              <input id="income" type="number" min="0" step="100" value="100000" />
+            </label>
+            <label>
+              Risk Profile
+              <select id="risk">
+                <option value="conservative" selected>Conservative</option>
+                <option value="moderate">Moderate</option>
+                <option value="aggressive">Aggressive</option>
+              </select>
+            </label>
+            <label>
+              Inflation (annual %)
+              <input id="inflation" type="number" min="0" step="0.1" value="5" />
+            </label>
+          </div>
+          <div class="divider"></div>
+          <div class="form-grid">
+            <label>
+              Current Monthly Savings / SIP Start (₹)
+              <input id="sipMonthly" type="number" min="0" step="100" value="20000" />
+            </label>
+            <label>
+              SIP Duration (years)
+              <input id="sipYears" type="number" min="0" step="1" value="10" />
+            </label>
+            <label>
+              Expected Market Return (annual %)
+              <input id="returnRate" type="number" min="0" step="0.1" value="12" />
+            </label>
+            <label>
+              Risk Capacity Factor
+              <select id="capacity">
+                <option value="low">Low</option>
+                <option value="medium" selected>Medium</option>
+                <option value="high">High</option>
+              </select>
+            </label>
+          </div>
+        </section>
+
+        <section class="card accent-red stagger-2">
+          <h2><span class="section-badge">2</span> Future Goals</h2>
+          <p class="muted">Add multiple goals. The planner prioritizes them and maps to an allocation.</p>
+          <div class="goal-editor">
+            <div class="form-grid">
+              <label>
+                Goal Name
+                <input id="goalName" type="text" value="Home" />
+              </label>
+              <label>
+                Goal Type
+                <select id="goalType">
+                  <option value="retirement" selected>Retirement</option>
+                  <option value="education">Education</option>
+                  <option value="purchase">Purchase</option>
+                  <option value="travel">Travel</option>
+                </select>
+              </label>
+              <label>
+                Target Age
+                <input id="goalAge" type="number" min="0" value="45" />
+              </label>
+              <label>
+                Target Amount Today (₹)
+                <input id="goalAmountToday" type="number" min="0" step="1000" value="5000000" />
+              </label>
+            </div>
+
+            <div class="form-grid">
+              <label>
+                Priority
+                <select id="goalPriority">
+                  <option value="1" selected>1 (Highest)</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4 (Lowest)</option>
+                </select>
+              </label>
+              <label>
+                Goal Risk Tolerance
+                <select id="goalRisk">
+                  <option value="low">Low (safer assets)</option>
+                  <option value="medium" selected>Medium</option>
+                  <option value="high">High (more growth)</option>
+                </select>
+              </label>
+              <label>
+                Starting SIP Month (optional)
+                <input id="goalSIPStart" type="number" min="0" step="1" value="0" />
+                <span class="hint">0 = start now</span>
+              </label>
+              <label>
+                Target Part of Roadmap
+                <select id="goalShare">
+                  <option value="auto" selected>Auto (planner decides)</option>
+                  <option value="0.2">20%</option>
+                  <option value="0.3">30%</option>
+                  <option value="0.5">50%</option>
+                  <option value="0.7">70%</option>
+                  <option value="0.9">90%</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="actions">
+              <button id="addGoalBtn" class="primary">Add Goal</button>
+              <button id="clearGoalsBtn" class="ghost">Clear</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="card accent-green stagger-3">
+          <h2><span class="section-badge">3</span> Goals List</h2>
+          <div class="table-wrap">
+            <table class="table" aria-label="Goals table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Goal</th>
+                  <th>Target Age</th>
+                  <th>Priority</th>
+                  <th>Risk</th>
+                  <th>Amount Today (₹)</th>
+                  <th>Inflation Adj. (₹)</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="goalsTbody"></tbody>
+            </table>
+          </div>
+          <div class="actions">
+            <button id="computeBtn" class="primary">Generate Roadmap</button>
+          </div>
+        </section>
+
+        <section class="card accent-teal stagger-4">
+          <h2><span class="section-badge">4</span> Results</h2>
+          <div id="results" class="results"></div>
+          <div class="disclaimer">
+            This is an educational planning tool. It is not financial advice.
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>Built for goal-based planning: prioritization, SIP calculations, inflation-adjusted values, allocation & retirement projection.</span>
+      </footer>
+    </div>
+
+    <div id="toastContainer" class="toast-container"></div>
+    <div class="page-transition active"></div>
+    <button class="back-to-top" aria-label="Back to top" title="Back to top">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+    </button>
+    <script type="module" src="/src/pages/goal-planner/main.js"></script>
+  </body>
+</html>
+
+
+
+

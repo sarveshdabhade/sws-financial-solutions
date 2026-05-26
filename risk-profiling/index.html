@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SWS — Client Risk Profiling Engine</title>
+  <link rel="stylesheet" href="/src/shared/styles/base.css">
+  <link rel="stylesheet" href="/src/pages/home/styles.css">
+  <link rel="stylesheet" href="/src/pages/risk-profiling/styles.css">
+</head>
+<body class="mesh-bg">
+  
+    <header class="topbar">
+    <div class="topbar-inner">
+      <a href="/" class="site-brand">
+        <div class="brand-icon">
+          <img src="/logo.png" alt="SWS Financial Logo" style="max-width: 70px; height: auto;">
+        </div>
+        <div class="brand-text">
+          <div class="brand-name"><span class="sws-s">S</span><span class="sws-w">W</span><span class="sws-s">S</span> <span class="company-name">Financial Solutions Pvt. Ltd.</span></div>
+          <div class="brand-tagline">Comprehensive Financial Consultancy &amp; Services</div>
+        </div>
+      </a>
+      <nav class="topnav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/goal-planner/" class="nav-link">Goal Planner</a>
+        <a href="/risk-profiling/" class="nav-link active">Risk Profiler</a>
+        <a href="/insurance-calculator/" class="nav-link">Insurance</a>
+        <a href="/emergency-fund/" class="nav-link">Emergency Fund</a>
+        <a href="/debt-wealth-optimizer/" class="nav-link">Debt vs Wealth</a>
+        <button class="theme-toggle" aria-label="Toggle theme" title="Toggle dark mode"></button>
+      </nav>
+    </div>
+  </header>
+    <header class="header">
+      <div>
+        <h1>Client Risk Profiling Engine</h1>
+        <p class="subtitle">Psychometric + Financial Risk Assessment</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="card intro" id="introCard">
+        <h2>Understand your true risk appetite</h2>
+        <p class="muted">
+          Clients often overestimate or underestimate how much risk they can actually tolerate.
+          This engine combines behavioral finance questions with financial capacity checks to produce
+          an accurate risk score and a personalized asset allocation.
+        </p>
+        <div class="actions">
+          <button class="primary" id="btnStart">Start Assessment</button>
+        </div>
+      </section>
+
+      <section class="card quiz" id="quizCard" style="display:none">
+        <div class="quiz-header">
+          <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <div class="quiz-meta">
+            <span id="qCounter">Question 1 of 8</span>
+            <span class="muted" id="qCategory">Behavioral Finance</span>
+          </div>
+        </div>
+
+        <div id="questionArea">
+          <h2 id="qText"></h2>
+          <div class="options" id="optionsArea"></div>
+        </div>
+
+        <div class="quiz-actions">
+          <button class="ghost" id="btnPrev" style="display:none">Previous</button>
+          <button class="primary" id="btnNext" disabled>Next</button>
+        </div>
+      </section>
+
+      <section class="card results" id="resultsCard" style="display:none">
+        <div class="score-section">
+          <div class="score-ring-wrap">
+            <svg class="score-ring" viewBox="0 0 160 160">
+              <circle class="track" cx="80" cy="80" r="70" />
+              <circle class="fill" id="scoreCircle" cx="80" cy="80" r="70" />
+            </svg>
+            <div class="score-value">
+              <div class="score-number" id="scoreNumber">0</div>
+              <div class="score-label">Risk Score</div>
+            </div>
+          </div>
+          <div class="type-badge" id="typeBadge">Conservative</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 style="margin-bottom:10px">Suggested Asset Allocation</h2>
+        <div class="alloc-grid">
+          <div class="donut-wrap">
+            <div class="donut" id="allocationDonut"></div>
+            <div class="donut-center" id="donutCenter">Equity<br><strong>45%</strong></div>
+          </div>
+          <div class="chart-legend" id="allocLegend"></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 style="margin-bottom:10px">Behavioral Insights</h2>
+        <div class="insights" id="insightsArea"></div>
+
+        <div class="divider"></div>
+
+        <div class="actions">
+          <button class="ghost" id="btnRetake">Retake Assessment</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Behavioral finance analysis for investor suitability. Not financial advice.</span>
+    </footer>
+  </div>
+
+  <div id="toastContainer" class="toast-container"></div>
+  <div class="page-transition active"></div>
+  <button class="back-to-top" aria-label="Back to top" title="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+  <script type="module" src="/src/pages/risk-profiling/main.js"></script>
+</body>
+</html>
+
+
+
+
+

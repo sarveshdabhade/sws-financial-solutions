@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wealth Optimizer - SWS Financial Solutions</title>
+  <link rel="stylesheet" href="/src/shared/styles/base.css">
+  <link rel="stylesheet" href="/src/pages/home/styles.css">
+  <link rel="stylesheet" href="/wealth-optimizer/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="mesh-bg">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="/" class="site-brand">
+        <div class="brand-icon">
+          <img src="/logo.png" alt="SWS Financial Logo" style="max-width: 70px; height: auto;">
+        </div>
+        <div class="brand-text">
+          <div class="brand-name"><span class="sws-s">S</span><span class="sws-w">W</span><span class="sws-s">S</span> <span class="company-name">Financial Solutions Pvt. Ltd.</span></div>
+          <div class="brand-tagline">Comprehensive Financial Consultancy &amp; Services</div>
+        </div>
+      </a>
+      <nav class="topnav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/goal-planner/" class="nav-link">Goal Planner</a>
+        <a href="/risk-profiling/" class="nav-link">Risk Profiler</a>
+        <a href="/insurance-calculator/" class="nav-link">Insurance</a>
+        <a href="/emergency-fund/" class="nav-link">Emergency Fund</a>
+        <a href="/wealth-optimizer/" class="nav-link active">Wealth Optimizer</a>
+        <button class="theme-toggle" aria-label="Toggle theme" title="Toggle dark mode"></button>
+      </nav>
+    </div>
+  </header>
+
+  
+    <!-- Hero Section -->
+    <section class="hero-section" data-aos="fade-down">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-brain"></i>
+          <span>AI-Powered Financial Intelligence</span>
+        </div>
+        <h1 class="hero-title">
+          Should You Repay Your Loan Faster<br>
+          <span class="gradient-text">or Build Wealth Through Investing?</span>
+        </h1>
+        <p class="hero-subtitle">
+          An intelligent financial strategy analyzer comparing debt reduction and long-term wealth creation. Make data-driven decisions for your financial future.
+        </p>
+        <div class="hero-actions">
+          <button class="primary" onclick="scrollToSection('input-section')">
+            <i class="fas fa-play"></i> Start Analysis
+          </button>
+          <button class="ghost" onclick="scrollToSection('dashboard-section')">
+            <i class="fas fa-chart-bar"></i> View Dashboard
+          </button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-value" data-count="50000">0</div>
+            <div class="stat-label">Users Analyzed</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" data-count="250">0</div>
+            <div class="stat-label">Cr Strategies</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" data-count="98">0</div>
+            <div class="stat-label">% Accuracy</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="floating-icon icon-1"><i class="fas fa-coins"></i></div>
+        <div class="floating-icon icon-2"><i class="fas fa-chart-pie"></i></div>
+        <div class="floating-icon icon-3"><i class="fas fa-piggy-bank"></i></div>
+        <div class="floating-icon icon-4"><i class="fas fa-landmark"></i></div>
+      </div>
+    </section>
+
+    <!-- Input Section -->
+    <section id="input-section" class="input-section" data-aos="fade-up">
+      <div class="section-header">
+        <h2><i class="fas fa-sliders-h"></i> Financial Parameters</h2>
+        <p class="section-subtitle">Enter your current financial details for personalized analysis</p>
+      </div>
+      
+      <div class="input-grid">
+        <!-- Loan Details Card -->
+        <div class="input-card loan-card" data-aos="fade-right">
+          <div class="card-header">
+            <div class="card-icon loan-icon">
+              <i class="fas fa-file-invoice-dollar"></i>
+            </div>
+            <h3>Loan Details</h3>
+          </div>
+          <div class="input-group">
+            <label>
+              <i class="fas fa-rupee-sign"></i>
+              Outstanding Loan Amount
+            </label>
+            <input type="number" id="loanAmount" value="2000000" min="0" step="10000">
+            <input type="range" id="loanAmountRange" min="0" max="10000000" step="100000" value="2000000">
+          </div>
+          <div class="input-group">
+            <label>
+              <i class="fas fa-percentage"></i>
+              Interest Rate (%)
+            </label>
+            <input type="number" id="interestRate" value="10" min="0" max="30" step="0.1">
+            <input type="range" id="interestRateRange" min="0" max="30" step="0.5" value="10">
+          </div>
+          <div class="input-group">
+            <label>
+              <i class="fas fa-calendar-alt"></i>
+              Remaining Tenure (Years)
+            </label>
+            <input type="number" id="loanTenure" value="15" min="1" max="30" step="1">
+            <input type="range" id="loanTenureRange" min="1" max="30" step="1" value="15">
+          </div>
+          <div class="input-group">
+            <label>
+              <i class="fas fa-rupee-sign"></i>
+              Current EMI
+            </label>
+            <input type="number" id="currentEMI" value="21500" min="0" step="500">
+          </div>
+          <div class="input-group">
+            <label>
+              <i class="fas fa-wallet"></i>
+              Additional Monthly Savings
+            </label>
+            <input type="number" id="extraSavings" value="20000" min="0" step="1000">
+            <input type="range" id="extraSavingsRange" min="0" max="200000" step="5000" value="20000">
+          </div>
+        </div>
+
+        <!-- Investment Details Card -->
+        <div class="input-card investment-card" data-aos="fade-left">
+          <div class="card-header">
+            <div class="card-icon investment-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>Investment Details</h3>
+          </div>
+          <div class="input-group">
+            <label>
+              <i class="fas fa-rupee-sign"></i>
+              Monthly SIP Amount
+            </label>
+            <input type="number" id="sipAmount" value="20000" min="0" step="1000">
+            <input type="range" id="sipAmountRange" min="0" max="200000" step="5000" value="20000">
+          </div>
+          <div class="input-group">
+            <label>
+              <i class="fas fa-percentage"></i>
+              Expected CAGR (%)
+            </label>
+            <input type="number" id="expectedCAGR" value="12" min="0" max="25" step="0.5">
+            <input type="range" id="expectedCAGRRange" min="0" max="25" step="0.5" value="12">
+          </div>
+          <div class="input-group">
+            <label>
+              <i class="fas fa-clock"></i>
+              Investment Duration (Years)
+            </label>
+            <input type="number" id="investmentDuration" value="15" min="1" max="30" step="1">
+            <input type="range" id="investmentDurationRange" min="1" max="30" step="1" value="15">
+          </div>
+          <div class="input-group">
+            <label>
+              <i class="fas fa-percentage"></i>
+              Inflation Rate (%)
+            </label>
+            <input type="number" id="inflationRate" value="6" min="0" max="15" step="0.5">
+            <input type="range" id="inflationRateRange" min="0" max="15" step="0.5" value="6">
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional Parameters -->
+      <div class="additional-inputs" data-aos="fade-up">
+        <div class="input-row">
+          <div class="input-group small">
+            <label><i class="fas fa-user"></i> Age</label>
+            <input type="number" id="age" value="32" min="18" max="65">
+          </div>
+          <div class="input-group small">
+            <label><i class="fas fa-money-bill-wave"></i> Monthly Income</label>
+            <input type="number" id="monthlyIncome" value="80000" min="0" step="5000">
+          </div>
+          <div class="input-group small">
+            <label><i class="fas fa-shield-alt"></i> Risk Appetite</label>
+            <select id="riskAppetite">
+              <option value="conservative">Conservative</option>
+              <option value="moderate" selected>Moderate</option>
+              <option value="aggressive">Aggressive</option>
+            </select>
+          </div>
+          <div class="input-group small">
+            <label><i class="fas fa-briefcase"></i> Income Stability</label>
+            <select id="incomeStability">
+              <option value="stable">Stable</option>
+              <option value="moderate" selected>Moderate</option>
+              <option value="unstable">Unstable</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="analyze-button-container" data-aos="fade-up">
+        <button class="primary analyze-btn" onclick="analyzeStrategies()">
+          <i class="fas fa-calculator"></i> Analyze Strategies
+        </button>
+      </div>
+    </section>
+
+    <!-- Strategy Selection Section -->
+    <section class="strategy-section" data-aos="fade-up">
+      <div class="section-header">
+        <h2><i class="fas fa-chess"></i> Choose Your Strategy</h2>
+        <p class="section-subtitle">Select a financial approach to compare outcomes</p>
+      </div>
+      
+      <div class="strategy-cards">
+        <div class="strategy-card" data-strategy="prepayment" onclick="selectStrategy('prepayment')">
+          <div class="strategy-icon aggressive-icon">
+            <i class="fas fa-fire"></i>
+          </div>
+          <h3>Aggressive Loan Repayment</h3>
+          <p>Use all surplus savings to reduce liabilities faster and become debt-free sooner.</p>
+          <div class="strategy-tags">
+            <span class="tag">Low Risk</span>
+            <span class="tag">Guaranteed Returns</span>
+          </div>
+          <div class="strategy-check">
+            <i class="fas fa-check-circle"></i>
+          </div>
+        </div>
+
+        <div class="strategy-card" data-strategy="balanced" onclick="selectStrategy('balanced')">
+          <div class="strategy-icon balanced-icon">
+            <i class="fas fa-balance-scale"></i>
+          </div>
+          <h3>Balanced Strategy</h3>
+          <p>Split surplus between investment and debt reduction for optimal wealth creation.</p>
+          <div class="strategy-tags">
+            <span class="tag">Moderate Risk</span>
+            <span class="tag">Optimized Growth</span>
+          </div>
+          <div class="strategy-check">
+            <i class="fas fa-check-circle"></i>
+          </div>
+        </div>
+
+        <div class="strategy-card" data-strategy="investing" onclick="selectStrategy('investing')">
+          <div class="strategy-icon investing-icon">
+            <i class="fas fa-rocket"></i>
+          </div>
+          <h3>Aggressive Investing</h3>
+          <p>Maximize long-term wealth creation through SIP investing while maintaining minimum EMI.</p>
+          <div class="strategy-tags">
+            <span class="tag">High Growth</span>
+            <span class="tag">Market-Linked</span>
+          </div>
+          <div class="strategy-check">
+            <i class="fas fa-check-circle"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison Dashboard -->
+    <section id="dashboard-section" class="dashboard-section" data-aos="fade-up">
+      <div class="section-header">
+        <h2><i class="fas fa-tachometer-alt"></i> Comparison Dashboard</h2>
+        <p class="section-subtitle">Real-time financial metrics comparison</p>
+      </div>
+
+      <!-- Summary Cards -->
+      <div class="summary-cards">
+        <div class="summary-card" data-aos="zoom-in" data-aos-delay="0">
+          <div class="summary-icon loan-icon">
+            <i class="fas fa-hourglass-half"></i>
+          </div>
+          <div class="summary-content">
+            <div class="summary-label">Loan Closure Time</div>
+            <div class="summary-value">
+              <span class="prepayment-value" data-count="0">0</span>
+              <span class="vs-divider">vs</span>
+              <span class="investing-value" data-count="0">0</span>
+              <span class="unit">Years</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="summary-card" data-aos="zoom-in" data-aos-delay="100">
+          <div class="summary-icon savings-icon">
+            <i class="fas fa-piggy-bank"></i>
+          </div>
+          <div class="summary-content">
+            <div class="summary-label">Interest Saved</div>
+            <div class="summary-value">
+              <span class="currency">₹</span>
+              <span class="prepayment-value" data-count="0">0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="summary-card" data-aos="zoom-in" data-aos-delay="200">
+          <div class="summary-icon growth-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div class="summary-content">
+            <div class="summary-label">Final SIP Corpus</div>
+            <div class="summary-value">
+              <span class="currency">₹</span>
+              <span class="investing-value" data-count="0">0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="summary-card" data-aos="zoom-in" data-aos-delay="300">
+          <div class="summary-icon networth-icon">
+            <i class="fas fa-wallet"></i>
+          </div>
+          <div class="summary-content">
+            <div class="summary-label">Net Worth Difference</div>
+            <div class="summary-value">
+              <span class="currency">₹</span>
+              <span class="networth-value" data-count="0">0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="summary-card" data-aos="zoom-in" data-aos-delay="400">
+          <div class="summary-icon liquidity-icon">
+            <i class="fas fa-tint"></i>
+          </div>
+          <div class="summary-content">
+            <div class="summary-label">Liquidity Score</div>
+            <div class="summary-value">
+              <span class="prepayment-score" data-count="0">0</span>
+              <span class="vs-divider">vs</span>
+              <span class="investing-score" data-count="0">0</span>
+              <span class="unit">/100</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="summary-card" data-aos="zoom-in" data-aos-delay="500">
+          <div class="summary-icon efficiency-icon">
+            <i class="fas fa-cogs"></i>
+          </div>
+          <div class="summary-content">
+            <div class="summary-label">Financial Efficiency</div>
+            <div class="summary-value">
+              <span class="prepayment-efficiency" data-count="0">0</span>
+              <span class="vs-divider">vs</span>
+              <span class="investing-efficiency" data-count="0">0</span>
+              <span class="unit">%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Side by Side Comparison -->
+      <div class="comparison-table">
+        <div class="comparison-header">
+          <div class="comparison-title">Strategy Comparison</div>
+        </div>
+        <div class="comparison-row">
+          <div class="comparison-label">Loan Freedom</div>
+          <div class="comparison-value prepayment-col">
+            <i class="fas fa-check-circle success"></i> Faster
+          </div>
+          <div class="comparison-value investing-col">
+            <i class="fas fa-times-circle danger"></i> Normal
+          </div>
+        </div>
+        <div class="comparison-row">
+          <div class="comparison-label">Liquidity</div>
+          <div class="comparison-value prepayment-col">
+            <i class="fas fa-times-circle danger"></i> Lower
+          </div>
+          <div class="comparison-value investing-col">
+            <i class="fas fa-check-circle success"></i> Higher
+          </div>
+        </div>
+        <div class="comparison-row">
+          <div class="comparison-label">Risk Level</div>
+          <div class="comparison-value prepayment-col">
+            <i class="fas fa-shield-alt success"></i> Low
+          </div>
+          <div class="comparison-value investing-col">
+            <i class="fas fa-exclamation-triangle warning"></i> Market-Linked
+          </div>
+        </div>
+        <div class="comparison-row">
+          <div class="comparison-label">Interest Savings</div>
+          <div class="comparison-value prepayment-col">
+            <i class="fas fa-check-circle success"></i> Maximum
+          </div>
+          <div class="comparison-value investing-col">
+            <i class="fas fa-minus-circle muted"></i> None
+          </div>
+        </div>
+        <div class="comparison-row">
+          <div class="comparison-label">Wealth Potential</div>
+          <div class="comparison-value prepayment-col">
+            <i class="fas fa-minus-circle muted"></i> Limited
+          </div>
+          <div class="comparison-value investing-col">
+            <i class="fas fa-rocket success"></i> High
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Charts Section -->
+    <section class="charts-section" data-aos="fade-up">
+      <div class="section-header">
+        <h2><i class="fas fa-chart-area"></i> Financial Analytics</h2>
+        <p class="section-subtitle">Visual projections and growth trajectories</p>
+      </div>
+
+      <div class="charts-grid">
+        <div class="chart-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="chart-header">
+            <h3><i class="fas fa-chart-line"></i> Loan Balance Reduction</h3>
+          </div>
+          <canvas id="loanBalanceChart"></canvas>
+        </div>
+
+        <div class="chart-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="chart-header">
+            <h3><i class="fas fa-chart-bar"></i> SIP Wealth Growth</h3>
+          </div>
+          <canvas id="sipGrowthChart"></canvas>
+        </div>
+
+        <div class="chart-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="chart-header">
+            <h3><i class="fas fa-chart-pie"></i> Net Worth Comparison</h3>
+          </div>
+          <canvas id="netWorthChart"></canvas>
+        </div>
+
+        <div class="chart-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="chart-header">
+            <h3><i class="fas fa-balance-scale"></i> Interest vs Investment Gain</h3>
+          </div>
+          <canvas id="interestVsInvestmentChart"></canvas>
+        </div>
+
+        <div class="chart-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="chart-header">
+            <h3><i class="fas fa-history"></i> Wealth Accumulation Timeline</h3>
+          </div>
+          <canvas id="wealthTimelineChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI Recommendation Engine -->
+    <section class="ai-section" data-aos="fade-up">
+      <div class="section-header">
+        <h2><i class="fas fa-robot"></i> AI Advisory Recommendation</h2>
+        <p class="section-subtitle">Intelligent insights based on your financial profile</p>
+      </div>
+
+      <div class="ai-panel">
+        <div class="ai-avatar">
+          <div class="avatar-circle">
+            <i class="fas fa-brain"></i>
+          </div>
+          <div class="avatar-pulse"></div>
+        </div>
+        <div class="ai-content">
+          <div class="ai-message" id="aiRecommendation">
+            Analyzing your financial profile...
+          </div>
+          <div class="ai-confidence">
+            <span class="confidence-label">Confidence Score:</span>
+            <div class="confidence-bar">
+              <div class="confidence-fill" id="confidenceFill" style="width: 0%"></div>
+            </div>
+            <span class="confidence-value" id="confidenceValue">0%</span>
+          </div>
+          <div class="ai-factors">
+            <div class="factor-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Loan Interest vs Expected Returns</span>
+            </div>
+            <div class="factor-item">
+              <i class="fas fa-check-circle"></i>
+              <span>EMI Burden Analysis</span>
+            </div>
+            <div class="factor-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Income Stability Assessment</span>
+            </div>
+            <div class="factor-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Risk Profile Matching</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="advisor-notes" data-aos="fade-up" data-aos-delay="200">
+        <div class="notes-header">
+          <i class="fas fa-user-tie"></i>
+          <h3>Advisor Notes</h3>
+        </div>
+        <div class="notes-content" id="advisorNotes">
+          Enter your financial details to receive personalized advisor recommendations.
+        </div>
+      </div>
+    </section>
+
+    <!-- Opportunity Cost Analysis -->
+    <section class="opportunity-section" data-aos="fade-up">
+      <div class="section-header">
+        <h2><i class="fas fa-exchange-alt"></i> Opportunity Cost Analysis</h2>
+        <p class="section-subtitle">Understand the trade-offs between strategies</p>
+      </div>
+
+      <div class="opportunity-cards">
+        <div class="opportunity-card prepayment-cost" data-aos="fade-right">
+          <div class="opportunity-icon">
+            <i class="fas fa-arrow-down"></i>
+          </div>
+          <h3>Wealth Sacrificed by Prepayment</h3>
+          <div class="opportunity-value">
+            <span class="currency">₹</span>
+            <span class="opportunity-amount" data-count="0">0</span>
+          </div>
+          <p>Potential investment growth lost by choosing loan prepayment</p>
+        </div>
+
+        <div class="opportunity-card investing-cost" data-aos="fade-left">
+          <div class="opportunity-icon">
+            <i class="fas fa-arrow-up"></i>
+          </div>
+          <h3>Additional Interest Paid</h3>
+          <div class="opportunity-value">
+            <span class="currency">₹</span>
+            <span class="opportunity-amount" data-count="0">0</span>
+          </div>
+          <p>Extra interest cost by choosing investment over prepayment</p>
+        </div>
+      </div>
+
+      <div class="inflation-impact" data-aos="fade-up">
+        <div class="inflation-header">
+          <i class="fas fa-percentage"></i>
+          <h3>Inflation Impact</h3>
+        </div>
+        <div class="inflation-content">
+          <p id="inflationMessage">
+            Your corpus of <span class="highlight">₹1 crore</span> after <span class="highlight">20 years</span> may have purchasing power of only <span class="highlight">₹31 lakh</span> today.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Financial Health Score -->
+    <section class="health-section" data-aos="fade-up">
+      <div class="section-header">
+        <h2><i class="fas fa-heartbeat"></i> Financial Health Score</h2>
+        <p class="section-subtitle">Overall financial efficiency assessment</p>
+      </div>
+
+      <div class="health-gauge-container">
+        <div class="health-gauge">
+          <svg class="gauge-svg" viewBox="0 0 200 120">
+            <path class="gauge-bg" d="M 20 100 A 80 80 0 0 1 180 100" />
+            <path class="gauge-fill" id="gaugeFill" d="M 20 100 A 80 80 0 0 1 180 100" />
+            <text x="100" y="85" text-anchor="middle" class="gauge-score" id="healthScore">0</text>
+            <text x="100" y="105" text-anchor="middle" class="gauge-label">Score</text>
+          </svg>
+        </div>
+        <div class="health-categories">
+          <div class="health-category">
+            <div class="category-dot highly-optimized"></div>
+            <span>Highly Optimized (85+)</span>
+          </div>
+          <div class="health-category">
+            <div class="category-dot balanced"></div>
+            <span>Balanced (65-84)</span>
+          </div>
+          <div class="health-category">
+            <div class="category-dot moderate"></div>
+            <span>Moderate Risk (40-64)</span>
+          </div>
+          <div class="health-category">
+            <div class="category-dot inefficient"></div>
+            <span>Inefficient (&lt;40)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="health-metrics" data-aos="fade-up" data-aos-delay="200">
+        <div class="health-metric">
+          <div class="metric-label">Debt Burden</div>
+          <div class="metric-bar">
+            <div class="metric-fill" id="debtBurden" style="width: 0%"></div>
+          </div>
+        </div>
+        <div class="health-metric">
+          <div class="metric-label">Investment Potential</div>
+          <div class="metric-bar">
+            <div class="metric-fill" id="investmentPotential" style="width: 0%"></div>
+          </div>
+        </div>
+        <div class="health-metric">
+          <div class="metric-label">Liquidity Buffer</div>
+          <div class="metric-bar">
+            <div class="metric-fill" id="liquidityBuffer" style="width: 0%"></div>
+          </div>
+        </div>
+        <div class="health-metric">
+          <div class="metric-label">Risk Alignment</div>
+          <div class="metric-bar">
+            <div class="metric-fill" id="riskAlignment" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stress Testing Simulator -->
+    <section class="stress-section" data-aos="fade-up">
+      <div class="section-header">
+        <h2><i class="fas fa-vial"></i> Stress Testing Simulator</h2>
+        <p class="section-subtitle">Test your strategy against adverse scenarios</p>
+      </div>
+
+      <div class="stress-toggles">
+        <div class="stress-toggle" data-stress="market-crash">
+          <label class="toggle-switch">
+            <input type="checkbox" id="marketCrash" onchange="applyStressTest()">
+            <span class="toggle-slider"></span>
+          </label>
+          <div class="toggle-content">
+            <i class="fas fa-chart-line-down"></i>
+            <span>Market Crash (-30%)</span>
+          </div>
+        </div>
+
+        <div class="stress-toggle" data-stress="job-loss">
+          <label class="toggle-switch">
+            <input type="checkbox" id="jobLoss" onchange="applyStressTest()">
+            <span class="toggle-slider"></span>
+          </label>
+          <div class="toggle-content">
+            <i class="fas fa-user-slash"></i>
+            <span>Job Loss (6 months)</span>
+          </div>
+        </div>
+
+        <div class="stress-toggle" data-stress="salary-reduction">
+          <label class="toggle-switch">
+            <input type="checkbox" id="salaryReduction" onchange="applyStressTest()">
+            <span class="toggle-slider"></span>
+          </label>
+          <div class="toggle-content">
+            <i class="fas fa-arrow-down"></i>
+            <span>Salary Reduction (-25%)</span>
+          </div>
+        </div>
+
+        <div class="stress-toggle" data-stress="inflation-spike">
+          <label class="toggle-switch">
+            <input type="checkbox" id="inflationSpike" onchange="applyStressTest()">
+            <span class="toggle-slider"></span>
+          </label>
+          <div class="toggle-content">
+            <i class="fas fa-percentage"></i>
+            <span>Inflation Spike (+4%)</span>
+          </div>
+        </div>
+
+        <div class="stress-toggle" data-stress="rate-increase">
+          <label class="toggle-switch">
+            <input type="checkbox" id="rateIncrease" onchange="applyStressTest()">
+            <span class="toggle-slider"></span>
+          </label>
+          <div class="toggle-content">
+            <i class="fas fa-arrow-up"></i>
+            <span>Interest Rate Increase (+2%)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="stress-results" id="stressResults">
+        <div class="stress-result-card">
+          <div class="stress-icon survival">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Survival Impact</h3>
+          <div class="stress-value" id="survivalImpact">Low Risk</div>
+        </div>
+        <div class="stress-result-card">
+          <div class="stress-icon liquidity">
+            <i class="fas fa-tint"></i>
+          </div>
+          <h3>Liquidity Pressure</h3>
+          <div class="stress-value" id="liquidityPressure">Minimal</div>
+        </div>
+        <div class="stress-result-card">
+          <div class="stress-icon downside">
+            <i class="fas fa-arrow-down"></i>
+          </div>
+          <h3>Investment Downside</h3>
+          <div class="stress-value" id="investmentDownside">-15%</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final Recommendation Section -->
+    <section class="recommendation-section" data-aos="fade-up">
+      <div class="section-header">
+        <h2><i class="fas fa-lightbulb"></i> Final Recommendation</h2>
+        <p class="section-subtitle">Personalized action plan based on comprehensive analysis</p>
+      </div>
+
+      <div class="final-recommendation-card">
+        <div class="recommendation-header">
+          <div class="recommendation-badge">
+            <i class="fas fa-star"></i>
+            <span>Recommended Strategy</span>
+          </div>
+          <h2 id="recommendedStrategy">Balanced Allocation</h2>
+        </div>
+
+        <div class="recommendation-body">
+          <div class="recommendation-reasoning">
+            <h3><i class="fas fa-question-circle"></i> Why This Strategy?</h3>
+            <ul id="reasoningList">
+              <li>Moderate debt burden with manageable EMI</li>
+              <li>Stable income source with good growth potential</li>
+              <li>Long investment horizon for compounding</li>
+              <li>Adequate liquidity buffer maintained</li>
+            </ul>
+          </div>
+
+          <div class="recommendation-projection">
+            <h3><i class="fas fa-chart-line"></i> Future Wealth Projection</h3>
+            <div class="projection-item">
+              <span>5 Years:</span>
+              <span class="projection-value" id="projection5y">₹15,00,000</span>
+            </div>
+            <div class="projection-item">
+              <span>10 Years:</span>
+              <span class="projection-value" id="projection10y">₹45,00,000</span>
+            </div>
+            <div class="projection-item">
+              <span>15 Years:</span>
+              <span class="projection-value" id="projection15y">₹1,20,00,000</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="recommendation-actions">
+          <button class="primary" onclick="downloadReport()">
+            <i class="fas fa-download"></i> Download Report
+          </button>
+          <button class="ghost" onclick="saveStrategy()">
+            <i class="fas fa-save"></i> Save Strategy
+          </button>
+          <button class="ghost" onclick="recalculate()">
+            <i class="fas fa-redo"></i> Recalculate
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="wealth-footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Wealth Optimizer</h4>
+          <p>An intelligent financial decision intelligence tool by SWS Financial Solutions Pvt. Ltd.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <a href="/goal-planner/">Goal Planner</a>
+          <a href="/risk-profiling/">Risk Profiler</a>
+          <a href="/insurance-calculator/">Insurance Calculator</a>
+        </div>
+        <div class="footer-section">
+          <h4>Legal</h4>
+          <a href="#">Terms & Conditions</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Disclaimer</a>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <a href="#">support@swsfspl.com</a>
+          <a href="#">+91 98765 43210</a>
+        </div>
+      </div>
+      <div class="footer-disclaimer">
+        <p><strong>Disclaimer:</strong> This tool provides educational insights and should not be considered as professional financial advice. Please consult a certified financial advisor before making investment decisions.</p>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 SWS Financial Solutions Pvt. Ltd. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+  <div class="page-transition active"></div>
+  <button class="back-to-top" aria-label="Back to top" title="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.0.7/countUp.umd.min.js"></script>
+  <script type="module" src="/src/shared/interactive.js"></script>
+  <script type="module" src="/src/pages/wealth-optimizer/main.js"></script>
+</body>
+</html>
+
+
+
+
+
