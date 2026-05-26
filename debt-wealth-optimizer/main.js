@@ -1140,26 +1140,46 @@ function updateTimeline() {
   const prepYears = parseFloat(prepayment.years);
   const investYears = parseFloat(investing.years);
   const maxYears = Math.max(prepYears, investYears, investmentDuration);
+  const difference = Math.abs(investYears - prepYears);
   
   // Calculate positions (0-100%)
   const prepPosition = (prepYears / maxYears) * 100;
   const investPosition = (investYears / maxYears) * 100;
   
-  // Update marker positions
-  const prepMarker = document.getElementById('prepTimelineMarker');
-  const investMarker = document.getElementById('investTimelineMarker');
+  // Update timeline bar fills
+  const loanFill = document.getElementById('loanTimelineFill');
+  const investmentFill = document.getElementById('investmentTimelineFill');
   
-  if (prepMarker) {
-    prepMarker.style.left = prepPosition + '%';
+  if (loanFill) {
+    loanFill.style.width = prepPosition + '%';
   }
   
-  if (investMarker) {
-    investMarker.style.left = investPosition + '%';
+  if (investmentFill) {
+    investmentFill.style.width = investPosition + '%';
   }
   
-  // Update year labels
-  document.getElementById('prepTimelineYear').textContent = prepYears + ' yrs';
-  document.getElementById('investTimelineYear').textContent = investYears + ' yrs';
+  // Update timeline point positions
+  const loanPoint = document.getElementById('loanTimelinePoint');
+  const investmentPoint = document.getElementById('investmentTimelinePoint');
+  
+  if (loanPoint) {
+    loanPoint.style.left = prepPosition + '%';
+  }
+  
+  if (investmentPoint) {
+    investmentPoint.style.left = investPosition + '%';
+  }
+  
+  // Update year labels in cards
+  document.getElementById('prepTimelineYear').textContent = prepYears.toFixed(1) + ' yrs';
+  document.getElementById('investTimelineYear').textContent = investYears.toFixed(1) + ' yrs';
+  
+  // Update point values
+  document.getElementById('loanPointValue').textContent = prepYears.toFixed(1) + ' yrs';
+  document.getElementById('investmentPointValue').textContent = investYears.toFixed(1) + ' yrs';
+  
+  // Update difference
+  document.getElementById('timelineDifference').textContent = difference.toFixed(1) + ' years';
 }
 
 // ===== Stress Testing =====

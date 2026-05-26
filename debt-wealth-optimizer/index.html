@@ -518,23 +518,70 @@
         <h3><i class="fas fa-clock"></i> Timeline Comparison</h3>
       </div>
       <div class="timeline-container">
-        <div class="timeline-track">
-          <div class="timeline-marker prep-marker" id="prepTimelineMarker">
-            <div class="marker-label">Loan Freedom</div>
-            <div class="marker-year" id="prepTimelineYear">0 yrs</div>
+        <div class="timeline-cards">
+          <!-- Loan Freedom Card -->
+          <div class="timeline-card loan-card">
+            <div class="timeline-card-icon">
+              <i class="fas fa-unlock"></i>
+            </div>
+            <div class="timeline-card-content">
+              <div class="timeline-card-label">Loan Freedom</div>
+              <div class="timeline-card-value" id="prepTimelineYear">0 yrs</div>
+              <div class="timeline-card-sub">Time to become debt-free</div>
+            </div>
           </div>
-          <div class="timeline-marker invest-marker" id="investTimelineMarker">
-            <div class="marker-label">Investment Maturity</div>
-            <div class="marker-year" id="investTimelineYear">0 yrs</div>
+
+          <!-- Comparison Arrow -->
+          <div class="timeline-comparison">
+            <div class="comparison-arrow">
+              <i class="fas fa-arrow-right"></i>
+            </div>
+            <div class="comparison-difference">
+              <span class="difference-label">You achieve loan freedom</span>
+              <span class="difference-value" id="timelineDifference">0 years</span>
+              <span class="difference-label">sooner</span>
+            </div>
+          </div>
+
+          <!-- Investment Maturity Card -->
+          <div class="timeline-card investment-card">
+            <div class="timeline-card-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="timeline-card-content">
+              <div class="timeline-card-label">Investment Maturity</div>
+              <div class="timeline-card-value" id="investTimelineYear">0 yrs</div>
+              <div class="timeline-card-sub">Time until corpus matures</div>
+            </div>
           </div>
         </div>
+
+        <!-- Timeline Visualization -->
+        <div class="timeline-visualization">
+          <div class="timeline-bar">
+            <div class="timeline-fill loan-fill" id="loanTimelineFill"></div>
+            <div class="timeline-fill investment-fill" id="investmentTimelineFill"></div>
+          </div>
+          <div class="timeline-markers">
+            <div class="timeline-point loan-point" id="loanTimelinePoint">
+              <div class="point-label">Loan Freedom</div>
+              <div class="point-value" id="loanPointValue">0 yrs</div>
+            </div>
+            <div class="timeline-point investment-point" id="investmentTimelinePoint">
+              <div class="point-label">Investment Maturity</div>
+              <div class="point-value" id="investmentPointValue">0 yrs</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Legend -->
         <div class="timeline-legend">
           <div class="legend-item">
-            <div class="legend-dot prep-dot"></div>
+            <div class="legend-dot loan-dot"></div>
             <span>Prepayment Timeline</span>
           </div>
           <div class="legend-item">
-            <div class="legend-dot invest-dot"></div>
+            <div class="legend-dot investment-dot"></div>
             <span>Investing Timeline</span>
           </div>
         </div>

@@ -777,35 +777,134 @@
   box-shadow: var(--shadow);
 }
 
-.timeline-track {
-  position: relative;
-  height: 80px;
-  background: var(--bg);
-  border-radius: 12px;
-  margin-bottom: 20px;
-  display: flex;
+/* Timeline Cards */
+.timeline-cards {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 20px;
   align-items: center;
-  padding: 0 20px;
+  margin-bottom: 32px;
 }
 
-.timeline-marker {
-  position: absolute;
+.timeline-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: var(--bg);
+  border-radius: 14px;
+  border: 2px solid var(--border);
+  transition: all .3s ease;
+}
+
+.timeline-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 102, 204, .15);
+}
+
+.loan-card {
+  border-color: #ef4444;
+  background: linear-gradient(135deg, rgba(239, 68, 68, .05), rgba(239, 68, 68, .02));
+}
+
+.investment-card {
+  border-color: #3b82f6;
+  background: linear-gradient(135deg, rgba(59, 130, 246, .05), rgba(59, 130, 246, .02));
+}
+
+.timeline-card-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.loan-card .timeline-card-icon {
+  background: linear-gradient(135deg, #ef4444, #f97316);
+  color: white;
+}
+
+.investment-card .timeline-card-icon {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  color: white;
+}
+
+.timeline-card-content {
+  flex: 1;
+}
+
+.timeline-card-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.timeline-card-value {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.loan-card .timeline-card-value {
+  color: #ef4444;
+}
+
+.investment-card .timeline-card-value {
+  color: #3b82f6;
+}
+
+.timeline-card-sub {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+/* Comparison Arrow */
+.timeline-comparison {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  transition: left 0.5s ease;
+  padding: 16px;
 }
 
-.prep-marker {
-  left: 0;
+.comparison-arrow {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10b981, #059669);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  animation: pulse 2s ease-in-out infinite;
 }
 
-.invest-marker {
-  left: 0;
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, .4);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 12px rgba(16, 185, 129, 0);
+  }
 }
 
-.marker-label {
+.comparison-difference {
+  text-align: center;
+}
+
+.difference-label {
+  display: block;
   font-size: 11px;
   font-weight: 600;
   color: var(--muted);
@@ -813,30 +912,106 @@
   letter-spacing: 0.5px;
 }
 
-.marker-year {
+.difference-value {
+  display: block;
+  font-size: 18px;
+  font-weight: 800;
+  color: #10b981;
+  margin: 4px 0;
+}
+
+/* Timeline Visualization */
+.timeline-visualization {
+  margin-bottom: 24px;
+  padding: 20px;
+  background: var(--bg);
+  border-radius: 12px;
+}
+
+.timeline-bar {
+  position: relative;
+  height: 24px;
+  background: var(--input-border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.timeline-fill {
+  position: absolute;
+  height: 100%;
+  border-radius: 12px;
+  transition: width 0.8s ease;
+}
+
+.loan-fill {
+  background: linear-gradient(90deg, #ef4444, #f97316);
+  left: 0;
+}
+
+.investment-fill {
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  left: 0;
+}
+
+.timeline-markers {
+  position: relative;
+  height: 60px;
+}
+
+.timeline-point {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: left 0.8s ease;
+}
+
+.loan-point {
+  color: #ef4444;
+}
+
+.investment-point {
+  color: #3b82f6;
+}
+
+.point-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.point-value {
   font-size: 14px;
   font-weight: 700;
-  color: var(--primary);
   background: var(--card);
   padding: 4px 12px;
   border-radius: 20px;
   border: 2px solid var(--border);
+  white-space: nowrap;
 }
 
-.prep-marker .marker-year {
+.loan-point .point-value {
   border-color: #ef4444;
   color: #ef4444;
 }
 
-.invest-marker .marker-year {
+.investment-point .point-value {
   border-color: #3b82f6;
   color: #3b82f6;
 }
 
+/* Legend */
 .timeline-legend {
   display: flex;
   gap: 24px;
   justify-content: center;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
 }
 
 .legend-item {
@@ -854,11 +1029,11 @@
   border-radius: 50%;
 }
 
-.prep-dot {
+.loan-dot {
   background: #ef4444;
 }
 
-.invest-dot {
+.investment-dot {
   background: #3b82f6;
 }
 
@@ -1181,6 +1356,26 @@
     flex: 1 1 calc(50% - 6px);
     min-width: 120px;
   }
+  
+  .timeline-cards {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .timeline-comparison {
+    order: 2;
+    padding: 12px;
+  }
+  
+  .comparison-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+  
+  .difference-value {
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -1263,6 +1458,58 @@
   .radio-option {
     width: 100%;
     justify-content: center;
+  }
+  
+  .timeline-cards {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .timeline-card {
+    padding: 16px;
+  }
+  
+  .timeline-card-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+  }
+  
+  .timeline-card-value {
+    font-size: 24px;
+  }
+  
+  .timeline-comparison {
+    padding: 8px;
+  }
+  
+  .comparison-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+  
+  .difference-value {
+    font-size: 14px;
+  }
+  
+  .timeline-visualization {
+    padding: 16px;
+  }
+  
+  .timeline-bar {
+    height: 20px;
+  }
+  
+  .point-value {
+    font-size: 12px;
+    padding: 3px 10px;
+  }
+  
+  .timeline-legend {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
   }
 }
 
