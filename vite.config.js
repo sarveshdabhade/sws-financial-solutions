@@ -11,6 +11,7 @@ export default defineConfig({
         insuranceCalculator: resolve(__dirname, 'insurance-calculator/index.html'),
         emergencyFund: resolve(__dirname, 'emergency-fund/index.html'),
         wealthOptimizer: resolve(__dirname, 'wealth-optimizer/index.html'),
+        debtWealthOptimizer: resolve(__dirname, 'debt-wealth-optimizer/index.html'),
       },
     },
   },
